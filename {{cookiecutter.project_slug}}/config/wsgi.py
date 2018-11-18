@@ -12,7 +12,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-# TODO: Update with new settings layout
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'RENAME_ME.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
 application = get_wsgi_application()
