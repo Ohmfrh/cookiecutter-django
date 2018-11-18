@@ -50,8 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# TODO: Update urls with new layout
-ROOT_URLCONF = 'RENAME_ME.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -69,8 +68,7 @@ TEMPLATES = [
     },
 ]
 
-# TODO: Update WSGI with new layout
-WSGI_APPLICATION = 'RENAME_ME.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database

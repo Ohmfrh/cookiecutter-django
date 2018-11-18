@@ -3,8 +3,7 @@ import os
 import sys
 
 if __name__ == '__main__':
-    # TODO: Update settings location
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'RENAME_ME.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
