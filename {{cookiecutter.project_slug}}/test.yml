@@ -1,0 +1,39 @@
+version: '3'
+
+volumes:
+  local_postgres_data: {}
+  local_postgres_data_backups: {}
+
+services:
+
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    links:
+      - selenium
+    command: /start.sh
+    env_file:
+      - ./.envs/.local/.postgres
+      - ./.envs/.local/.django
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data
+      - local_postgres_data_backups:/backups
+    env_file:
+      - ./.envs/.local/.postgres
+
+  selenium:
+    image: selenium/standalone-chrome:3.11.0
+    ports:
+      - 4444:4444
