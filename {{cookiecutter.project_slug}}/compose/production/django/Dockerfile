@@ -5,8 +5,8 @@ RUN apk update \
   && apk add --virtual build-deps gcc python3-dev musl-dev \
   && apk add postgresql-dev
 
-COPY ./requirements.txt /requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt \
+COPY ./requirements /requirements
+RUN pip install --no-cache-dir -r /requirements/production.txt \
     && rm -rf /requirements
 
 COPY ./compose/production/django/start /start
