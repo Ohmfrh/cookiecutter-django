@@ -17,6 +17,7 @@ services:
     command: /start.sh
     env_file:
       - ./.envs/.local/.postgres
+      - ./.envs/.local/.django
 
   postgres:
     build:
