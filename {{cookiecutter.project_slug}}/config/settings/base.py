@@ -165,6 +165,7 @@ CELERYD_TASK_SOFT_TIME_LIMIT = 60
 
 CELERY_BEAT_SCHEDULE = {}
 
-
+# django_admin_env_notice
+# ------------------------------------------------------------------------------
 ENVIRONMENT_NAME = "ENVIRONMENT NOT SET"
 ENVIRONMENT_COLOR = "#000000"
