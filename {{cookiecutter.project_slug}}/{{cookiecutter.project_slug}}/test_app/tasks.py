@@ -8,7 +8,7 @@ def task1():
 
 
 @task()
-def task1():
+def task2():
     t = timezone.localtime(timezone.now())
     with open('logs.txt', 'a') as f:
         f.write(f"{t}\n")
