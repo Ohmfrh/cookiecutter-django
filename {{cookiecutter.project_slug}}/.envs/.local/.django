@@ -1,1 +1,8 @@
 DJANGO_SETTINGS_MODULE=config.settings.local
+
+REDIS_URL=redis://redis:6379/0
+CELERY_BROKER_URL=redis://redis:6379/0
+
+# Flower
+CELERY_FLOWER_USER=hbbtmtahoTKJIccBipWtLXTQdeDNwaUs
+CELERY_FLOWER_PASSWORD=hbhFwg7PI9F2oUJrjZiRZaPGVeXmiR8eePEVgG0RvnBVEcqe6ZcwdpVKiiqu1gqu
