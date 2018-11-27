@@ -6,7 +6,7 @@ volumes:
 
 services:
 
-  django:
+  django: &django
     build:
       context: .
       dockerfile: ./compose/local/django/Dockerfile
@@ -36,6 +36,33 @@ services:
 
   redis:
     image: redis:alpine
+
+  celeryworker:
+    <<: *django
+    image: cdcelery_local_celeryworker
+    depends_on:
+      - redis
+      - postgres
+
+    ports: []
+    command: /start-celeryworker
+
+  celerybeat:
+    <<: *django
+    image: cdcelery_local_celerybeat
+    depends_on:
+      - redis
+      - postgres
+
+    ports: []
+    command: /start-celerybeat
+
+  flower:
+    <<: *django
+    image: cdcelery_local_flower
+    ports:
+      - "5555:5555"
+    command: /start-flower
 
   selenium:
     image: selenium/standalone-chrome:3.11.0
