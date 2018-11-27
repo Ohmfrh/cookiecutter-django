@@ -58,6 +58,4 @@ services:
   flower:
     <<: *django
     image: cdcelery_production_flower
-    ports:
-      - "5555:5555"
     command: /start-flower
