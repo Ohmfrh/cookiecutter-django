@@ -153,7 +153,6 @@ def set_flags_in_settings_files():
 
 
 def main():
-    print("Hello, World!")
     set_flags_in_settings_files()
     set_flags_in_envs(generate_random_user(), generate_random_user())
 
