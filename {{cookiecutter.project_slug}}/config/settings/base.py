@@ -41,6 +41,10 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
+PRIORITY_THIRD_PARTY_PASS = [
+    'django_admin_env_notice',
+]
+
 THIRD_PARTY_APPS = [
 
 ]
@@ -49,7 +53,7 @@ LOCAL_APPS = [
 
 ]
 
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = PRIORITY_THIRD_PARTY_PASS + DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
