@@ -4,6 +4,7 @@ volumes:
   production_postgres_data: {}
   production_postgres_data_backups: {}
   nginx_staticfiles: {}
+  certs: {}
 
 services:
 
@@ -37,8 +38,10 @@ services:
       dockerfile: ./compose/production/nginx/Dockerfile
     ports:
       - "0.0.0.0:80:80"
+      - "0.0.0.0:443:443"
     volumes:
       - nginx_staticfiles:/staticfiles
+      - certs:/etc/letsencrypt
     depends_on:
       - django
 
