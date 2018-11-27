@@ -36,6 +36,10 @@ def generate_random_string(
     return "".join([random.choice(symbols) for _ in range(length)])
 
 
+def generate_random_user():
+    return generate_random_string(length=32, using_ascii_letters=True)
+
+
 def set_flag(file_path, flag, value=None, formatted=None, *args, **kwargs):
     if value is None:
         random_string = generate_random_string(*args, **kwargs)
@@ -69,6 +73,80 @@ def set_django_secret_key(file_path):
     return django_secret_key
 
 
+def set_django_admin_url(file_path):
+    django_admin_url = set_flag(
+        file_path,
+        "!!!SET DJANGO_ADMIN_URL!!!",
+        formatted="{}/",
+        length=32,
+        using_digits=True,
+        using_ascii_letters=True,
+    )
+    return django_admin_url
+
+
+def set_postgres_user(file_path, value):
+    postgres_user = set_flag(
+        file_path,
+        "!!!SET POSTGRES_USER!!!",
+        value=value,
+    )
+    return postgres_user
+
+
+def set_postgres_password(file_path, value=None):
+    postgres_password = set_flag(
+        file_path,
+        "!!!SET POSTGRES_PASSWORD!!!",
+        value=value,
+        length=64,
+        using_digits=True,
+        using_ascii_letters=True,
+    )
+    return postgres_password
+
+
+def set_celery_flower_user(file_path, value):
+    celery_flower_user = set_flag(
+        file_path,
+        "!!!SET CELERY_FLOWER_USER!!!",
+        value=value,
+    )
+    return celery_flower_user
+
+
+def set_celery_flower_password(file_path, value=None):
+    celery_flower_password = set_flag(
+        file_path,
+        "!!!SET CELERY_FLOWER_PASSWORD!!!",
+        value=value,
+        length=64,
+        using_digits=True,
+        using_ascii_letters=True,
+    )
+    return celery_flower_password
+
+
+def set_flags_in_envs(postgres_user, celery_flower_user):
+    local_django_envs_path = os.path.join(".envs", ".local", ".django")
+    production_django_envs_path = os.path.join(".envs", ".production", ".django")
+    local_postgres_envs_path = os.path.join(".envs", ".local", ".postgres")
+    production_postgres_envs_path = os.path.join(".envs", ".production", ".postgres")
+
+    set_django_secret_key(production_django_envs_path)
+    set_django_admin_url(production_django_envs_path)
+
+    set_postgres_user(local_postgres_envs_path, value=postgres_user)
+    set_postgres_password(local_postgres_envs_path)
+    set_postgres_user(production_postgres_envs_path, value=postgres_user)
+    set_postgres_password(production_postgres_envs_path)
+    #
+    set_celery_flower_user(local_django_envs_path, value=celery_flower_user)
+    set_celery_flower_password(local_django_envs_path)
+    set_celery_flower_user(production_django_envs_path, value=celery_flower_user)
+    set_celery_flower_password(production_django_envs_path)
+
+
 def set_flags_in_settings_files():
     set_django_secret_key(os.path.join("config", "settings", "local.py"))
     set_django_secret_key(os.path.join("config", "settings", "production.py"))
@@ -77,6 +155,7 @@ def set_flags_in_settings_files():
 def main():
     print("Hello, World!")
     set_flags_in_settings_files()
+    set_flags_in_envs(generate_random_user(), generate_random_user())
 
 
 if __name__ == "__main__":
