@@ -14,3 +14,8 @@ CELERY_BEAT_SCHEDULE['test-task1'] = {
     'task': '{{cookiecutter.project_slug}}.test_app.tasks.task1',
     'schedule': 10,
 }
+
+CELERY_BEAT_SCHEDULE['test-task2'] = {
+    'task': '{{cookiecutter.project_slug}}.test_app.tasks.task2',
+    'schedule': 60,
+}
