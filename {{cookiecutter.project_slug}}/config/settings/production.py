@@ -8,3 +8,6 @@ DEBUG = False
 ALLOWED_HOSTS = ['{{cookiecutter.domain_name}}']
 
 STATIC_ROOT = 'static_prod'
+
+ENVIRONMENT_NAME = "Production server"
+ENVIRONMENT_COLOR = "#FF2222"

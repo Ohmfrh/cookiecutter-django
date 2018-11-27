@@ -21,3 +21,6 @@ CELERY_BEAT_SCHEDULE['test-task2'] = {
     'task': '{{cookiecutter.project_slug}}.test_app.tasks.task2',
     'schedule': 60,
 }
+
+ENVIRONMENT_NAME = "Development"
+ENVIRONMENT_COLOR = "#8E8E8E"
