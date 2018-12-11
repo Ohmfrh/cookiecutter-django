@@ -23,6 +23,7 @@ services:
     env_file:
       - ./.envs/.local/.postgres
       - ./.envs/.local/.django
+    image: {{cookiecutter.project_slug}}_local_django
 
   postgres:
     build:
@@ -33,13 +34,14 @@ services:
       - local_postgres_data_backups:/backups
     env_file:
       - ./.envs/.local/.postgres
+    image: {{cookiecutter.project_slug}}_local_postgres
 
   redis:
     image: redis:alpine
 
   celeryworker:
     <<: *django
-    image: cdcelery_local_celeryworker
+    image: {{cookiecutter.project_slug}}_local_celeryworker
     depends_on:
       - redis
       - postgres
@@ -49,7 +51,7 @@ services:
 
   celerybeat:
     <<: *django
-    image: cdcelery_local_celerybeat
+    image: {{cookiecutter.project_slug}}_local_celerybeat
     depends_on:
       - redis
       - postgres
@@ -59,7 +61,7 @@ services:
 
   flower:
     <<: *django
-    image: cdcelery_local_flower
+    image: {{cookiecutter.project_slug}}_local_flower
     ports:
       - "5555:5555"
     command: /start-flower

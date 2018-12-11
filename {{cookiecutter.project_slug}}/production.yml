@@ -51,15 +51,15 @@ services:
 
   celeryworker:
     <<: *django
-    image: cdcelery_production_celeryworker
+    image: {{cookiecutter.project_slug}}_production_celeryworker
     command: /start-celeryworker
 
   celerybeat:
     <<: *django
-    image: cdcelery_production_celerybeat
+    image: {{cookiecutter.project_slug}}_production_celerybeat
     command: /start-celerybeat
 
   flower:
     <<: *django
-    image: cdcelery_production_flower
+    image: {{cookiecutter.project_slug}}_production_flower
     command: /start-flower
