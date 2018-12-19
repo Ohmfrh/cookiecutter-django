@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% block title %}Page Title{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -86,7 +86,39 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MAIN NAVIGATION</li>
-
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-share"></i> <span>Multilevel</span>
+              <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+              <li class="treeview">
+                <a href="#"><i class="fa fa-circle-o"></i> Level One
+                  <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-circle-o"></i> Level Two
+                      <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                      <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            </ul>
+          </li>
         </ul>
       </section>
       <!-- /.sidebar -->
@@ -99,29 +131,21 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          {% block dasbhoard_name %}Dashboard Name{% endblock %}
+          {% block dasbhoard_name %}{% endblock %}
         </h1>
       </section>
 
       <!-- Main content -->
       <section class="content">
 
-        <!-- Default box -->
-        <div class="box">
-          <div class="box-body">
-            {% block body %}Body{% endblock %}
-          </div>
-          <!-- /.box-body -->
-
-        </div>
-        <!-- /.box -->
+        {% block body %}{% endblock %}
 
       </section>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
-    <footer class="main-footer">{% block footer %}Footer{% endblock %}</footer>
+    <footer class="main-footer">{% block footer %}{% endblock %}</footer>
 
   </div>
   <!-- ./wrapper -->
