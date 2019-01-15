@@ -25,6 +25,10 @@ COPY ./compose/local/django/start.sh /start.sh
 RUN sed -i 's/\r//' /start.sh
 RUN chmod +x /start.sh
 
+COPY ./compose/local/django/test.sh /test.sh
+RUN sed -i 's/\r//' /test.sh
+RUN chmod +x /test.sh
+
 COPY ./compose/local/django/celery/worker/start /start-celeryworker
 RUN sed -i 's/\r//' /start-celeryworker
 RUN chmod +x /start-celeryworker

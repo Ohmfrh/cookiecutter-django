@@ -19,7 +19,7 @@ services:
       - 8000:8000
     links:
       - selenium
-    command: /start.sh
+    command: /test.sh
     env_file:
       - ./.envs/.test/.postgres
       - ./.envs/.test/.django
@@ -30,8 +30,8 @@ services:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
     volumes:
-      - local_postgres_data:/var/lib/postgresql/data
-      - local_postgres_data_backups:/backups
+      - test_postgres_data:/var/lib/postgresql/data
+      - test_postgres_data_backups:/backups
     env_file:
       - ./.envs/.test/.postgres
     image: {{cookiecutter.project_slug}}_local_postgres
