@@ -132,7 +132,7 @@ def set_flags_in_envs(postgres_user, celery_flower_user):
     test_django_envs_path = os.path.join(".envs", ".test", ".django")
     production_django_envs_path = os.path.join(".envs", ".production", ".django")
     local_postgres_envs_path = os.path.join(".envs", ".local", ".postgres")
-    test_postgres_envs_path = os.path.join(".envs", ".local", ".postgres")
+    test_postgres_envs_path = os.path.join(".envs", ".test", ".postgres")
     production_postgres_envs_path = os.path.join(".envs", ".production", ".postgres")
 
     set_django_secret_key(production_django_envs_path)
@@ -140,13 +140,15 @@ def set_flags_in_envs(postgres_user, celery_flower_user):
 
     set_postgres_user(local_postgres_envs_path, value=postgres_user)
     set_postgres_password(local_postgres_envs_path)
-    set_postgres_user(test_django_envs_path, value=postgres_user)
+    set_postgres_user(test_postgres_envs_path, value=postgres_user)
     set_postgres_password(test_postgres_envs_path)
     set_postgres_user(production_postgres_envs_path, value=postgres_user)
     set_postgres_password(production_postgres_envs_path)
 
     set_celery_flower_user(local_django_envs_path, value=celery_flower_user)
     set_celery_flower_password(local_django_envs_path)
+    set_celery_flower_user(test_django_envs_path, value=celery_flower_user)
+    set_celery_flower_password(test_django_envs_path)
     set_celery_flower_user(production_django_envs_path, value=celery_flower_user)
     set_celery_flower_password(production_django_envs_path)
 
