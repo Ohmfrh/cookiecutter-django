@@ -4,3 +4,5 @@
 - include: ubuntu.yml
 
 - include: docker.yml
+
+- include: git.yml
