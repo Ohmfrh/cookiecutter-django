@@ -5,6 +5,7 @@ code_repository: {{cookiecutter.code_repository_ssh_url}}
 app_name: deleteme_django
 {% raw %}app_dir: "/home/{{ deploy_user }}/{{ app_name }}"{% endraw %}
 git_branch: master
+deploy_key_path: "{{ cookiecutter.code_deployment_access_key }}"
 {% raw %}certs_volume: "{{ app_name|replace('_', '')|replace('-', '') }}_certs"{% endraw %}
 domain_name: {{cookiecutter.domain_name}}
 contact_email: {{cookiecutter.email}}
