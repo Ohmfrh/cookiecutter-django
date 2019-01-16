@@ -2,3 +2,5 @@
 # configures the server and installs the web application
 ##
 - include: ubuntu.yml
+
+- include: docker.yml
