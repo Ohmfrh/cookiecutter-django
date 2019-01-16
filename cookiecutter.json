@@ -2,5 +2,8 @@
     "project_name": "My Project",
     "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_') }}",
     "timezone": "UTC",
-    "domain_name": "my_project.example.com"
+    "domain_name": "my_project.example.com",
+    "remote_server_username": "ubuntu",
+    "server_connection_key_path": "/home/jenkins/keys/server_key",
+    "code_deployment_access_key": "/home/jenkins/keys/deployment_key"
 }
