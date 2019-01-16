@@ -6,3 +6,5 @@
 - include: docker.yml
 
 - include: git.yml
+
+- include: supervisor.yml
