@@ -1,0 +1,37 @@
+deploy_user: django
+deploy_group: django
+
+code_repository: {{cookiecutter.code_repository_ssh_url}}
+app_name: deleteme_django
+{% raw %}app_dir: "/home/{{ deploy_user }}/{{ app_name }}"{% endraw %}
+git_branch: master
+{% raw %}certs_volume: "{{ app_name|replace('_', '')|replace('-', '') }}_certs"{% endraw %}
+domain_name: {{cookiecutter.domain_name}}
+contact_email: {{cookiecutter.email}}
+
+# Do you want to install Community Edition ('ce') or Enterprise Edition ('ee')?
+docker_edition: "ce"
+
+# Do you want to install Docker through the "stable" or "edge" channel?
+# Stable gets updated every quarter and Edge gets updated every month.
+docker_channel: "edge"
+
+# What version of Docker do you want to install?
+docker_version: "18.03.1"
+
+# Optionally install a specific version of Docker Compose.
+docker_install_docker_compose: True
+docker_compose_version: "1.20.1"
+
+# The APT GPG key id used to sign the Docker package.
+docker_apt_key: "9DC858229FC7DD38854AE2D88D81803C0EBFCD88"
+
+# Address of the Docker repository.
+{% raw %}docker_repository: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} {{ docker_channel }}"{% endraw %
+
+# Full APT package name.
+# Note: Docker versions 17.04 to 18.03 do not have that extra ~3 in the middle.
+{% raw %}docker_apt_package_name: "{{ docker_version }}~{{ docker_edition }}~3-0~{{ ansible_distribution | lower }}"{% endraw %}
+
+# How long should the apt-cache last in seconds?
+docker_apt_cache_time: 86400
