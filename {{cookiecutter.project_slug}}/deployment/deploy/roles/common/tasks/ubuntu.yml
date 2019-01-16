@@ -1,3 +1,4 @@
+{% raw %}
 ###
 # Configures Ubuntu server locales
 ##
@@ -9,3 +10,4 @@
     - en_US.UTF-8
     - es_MX
     - es_MX.UTF-8
+{% endraw %}
