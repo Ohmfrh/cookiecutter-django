@@ -1,0 +1,11 @@
+###
+# Configures Ubuntu server locales
+##
+
+- name: configure locales
+  locale_gen: name={{ item }}
+  with_items:
+    - en_US
+    - en_US.UTF-8
+    - es_MX
+    - es_MX.UTF-8
