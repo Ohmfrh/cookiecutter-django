@@ -1,0 +1,13 @@
+{% raw %}
+###
+# Adds cron jobs for app
+##
+- name: Add automatic database backups
+  cron:
+    name: App automatic backups
+    job: "/usr/local/bin/docker-compose -f {{ app_dir }}/production.yml run --rm postgres backup"
+    state: "present"
+    minute: 30
+    hour: 23
+  become_user: django
+{% endraw %}
