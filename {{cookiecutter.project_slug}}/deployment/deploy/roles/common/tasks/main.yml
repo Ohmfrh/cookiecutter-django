@@ -2,11 +2,3 @@
 # configures the server and installs the web application
 ##
 - include: ubuntu.yml
-
-- include: docker.yml
-
-- include: git.yml
-
-- include: supervisor.yml
-
-- include: cron.yml
