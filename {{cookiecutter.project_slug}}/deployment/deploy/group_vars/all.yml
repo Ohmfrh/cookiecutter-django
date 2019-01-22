@@ -2,7 +2,7 @@ deploy_user: django
 deploy_group: django
 
 code_repository: {{cookiecutter.code_repository_ssh_url}}
-app_name: deleteme_django
+app_name: "{{ cookiecutter.project_slug }}"
 {% raw %}app_dir: "/home/{{ deploy_user }}/{{ app_name }}"{% endraw %}
 git_branch: master
 deploy_key_path: "{{ cookiecutter.code_deployment_access_key }}"
