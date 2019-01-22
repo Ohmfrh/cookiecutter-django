@@ -28,8 +28,8 @@ services:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
     volumes:
-      - local_postgres_data:/var/lib/postgresql/data
-      - local_postgres_data_backups:/backups
+      - test_postgres_data:/var/lib/postgresql/data
+      - test_postgres_data_backups:/backups
     env_file:
       - ./.envs/.local/.postgres
 
