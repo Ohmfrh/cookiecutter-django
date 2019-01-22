@@ -16,7 +16,7 @@ services:
       - postgres
       - redis
     volumes:
-      - nginx_staticfiles:/app/static_prod
+      - nginx_staticfiles:/app/staticfiles
     command: /start
     env_file:
       - ./.envs/.production/.postgres
