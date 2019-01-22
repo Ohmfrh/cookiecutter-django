@@ -29,7 +29,7 @@ pipeline {
               }
             }
             steps {
-                sh "(cd deployment; ./deploy.sh)"
+                sh "(cd deployment; ls /)"
             }
         }
     }
