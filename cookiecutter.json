@@ -8,5 +8,5 @@
     "code_repository_ssh_url": "Set repository URL",
     "remote_server_username": "ubuntu",
     "server_connection_key_path": "/keys/{{cookiecutter.project_slug}}_server_key",
-    "code_deployment_access_key": "/keys/{{cookiecutter.project_slug}}_"
+    "code_deployment_access_key": "/keys/{{cookiecutter.project_slug}}_deployment_key"
 }
