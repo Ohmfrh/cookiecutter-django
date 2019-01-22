@@ -1,4 +1,4 @@
-String cron_string = BRANCH_NAME == "master" ? "H 3 * * *" : "*/20 * * * *"
+String cron_string = BRANCH_NAME == "master" ? "H 2 * * *" : "*/20 * * * *"
 
 pipeline {
     agent any
@@ -29,8 +29,22 @@ pipeline {
               }
             }
             steps {
-                sh "(cd deployment; ./bash.sh)"
+                sh "(cd deployment; ./deploy.sh)"
             }
+        }
+    }
+    post {
+        always {
+            echo 'Sending email'
+
+            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+                recipientProviders: [
+                            [$class: 'CulpritsRecipientProvider'],
+                            [$class: 'DevelopersRecipientProvider'],
+                            [$class: 'RequesterRecipientProvider']
+                        ],
+                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+
         }
     }
 }
